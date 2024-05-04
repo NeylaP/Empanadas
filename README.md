@@ -1,86 +1,61 @@
-# Compra de empanadas
+# Las Empanadirris. :dumpling:
 
-## Enunciado del problema
+Este proyecto nos brinda una solucion al enunciado de las [empanadas challenge](https://github.com/GeeksHubsAcademy/javascript-empanadas-challenge)
 
-El profesor Maple se embarca en la tarea de adquirir empanadas para todos los participantes del bootcamp de programación. Dado que hoy es el Día de las Empanadas,  hay una oferta especial en la que te llevas hasta tres empanadas y solo pagas la más cara. Con un presupuesto ajustado para el curso, los profesores debaten para intentar minimizar el gasto total por todas las empanadas.
+## Contenido 🗂️
 
-Entonces, el profesor Maple decide seguir la siguiente estrategia: como la empanada más cara la tendrá que pagar de todas formas, la comprará junto a la segunda y tercera más caras, que ofrecen el mayor ahorro. Con las n-3 empanadas restantes, aplicará el mismo procedimiento hasta que no quede ninguna.
+- [Stack 🛠️](#stack)
+- [Solución :unlock:](#solucion)
+- [Explicación :memo:](#explicacion)
+- [Instalación :gear:](#instalacion)
+- [Instrucciones :open_book:](#instrucciones)
+- [Autora :woman_technologist:](#autora)
 
-Los profesores reflexionan y llegan a la conclusión de que esta es la mejor estrategia. Pero cuando están a punto de pagar, escuchan la siguiente conversación de una familia de al lado:
+## <a id="stack">Stack 🛠️</a>
 
-"Queremos una empanada de pollo, de 12 euros, una de carne, de 14 euros, y una vegetariana, de 16 euros."
+- **Javascript**  - Logica y validaciones.
 
-Los profesores piensan inmediatamente: "Cogerán la oferta 3x1, de forma que solo paguen los 16 euros de la empanada vegetariana y se lleven gratis la de carne y la de pollo". A lo cual, la familia continúa:
+## <a id="solucion">Solución :unlock:</a>
+``` javascript
+export const fn = (a, b, c) => {
+   const nEmpanadas = a + b + c;
 
-"Pero pónganosla de la siguiente forma: Dos empanadas mitad pollo y mitad vegetariana, y la de carne aparte. Como todas las empanadas valen 14 euros, cogeremos la oferta 3x1 y nos las llevaremos por 14 euros".
+   if (a < 0 || b < 0 || c < 0) throw new Error("No se aceptan numeros negativos");
 
-Cuando los profesores salen de su asombro, deciden que lo más sensato es utilizar el hecho de que las empanadas se pueden pedir mitad de un tipo y mitad de otro, pagando por ella la media del costo de las dos empanadas enteras. Así, una empanada mitad pollo y mitad vegetariana valdrá (12 + 16)/2 = 14 euros. Sin embargo, no logran decidir cuál es la mejor forma de repartir las empanadas en mitades primero, y en grupos después, para minimizar el precio.
+   if ((nEmpanadas % 3) != 0) throw new Error("La suma no es multiplo de 3");
 
-Ayúdales haciendo una función que lo calcule lo más rápido posible: hay decenas de estudiantes hambrientos que dependen de ti.
+   if (nEmpanadas > 40) throw new Error("La suma no puede ser mayor a 40");
 
-Las empanadas que han elegido los profesores tienen 3, 4 o 5 ingredientes. La masa de una empanada vale 6 euros, y cada ingrediente adicional vale 2 euros. Así, las empanadas pueden valer 12, 14 o 16 euros. Se garantiza que el número total de empanadas será múltiplo de 3.
+   const subTotal = (a * 12) + (b * 14) + (c * 16);
+   return Math.ceil(subTotal / 3);
+};
+```
 
-## Entrada
+## <a id="explicacion">Explicación :memo:</a>
 
-La función debe tener tres parámetros de entrada. Cada conjunto de entrada consta de tres enteros, a b c, que son el número de empanadas de 3, 4 y 5 ingredientes, respectivamente. Se garantiza que el número de empanadas, a + b + c, cumple que a + b + c < 40. Además, el número de empanadas es divisible entre 3.
+La fórmula toma en cuenta el precio más alto y el más bajo de las empanadas seleccionadas. Luego, considera la proporción entre estos precios para determinar un valor relativo para cada tipo de empanada. Esto se hace multiplicando el número de cada tipo por su precio correspondiente. Después de sumar estos valores para tres empanadas y dividir por el total de tipos (3), obtenemos un total mínimo que refleja el valor relativo de cada tipo de empanada en cualquier combinación, No obstante pueden haber ocasiones en las que el total sea un numero decimal por lo que tendremos que redondearlo al valor siguiente.
 
-## Salida
+## <a id="instalacion">Instalación :gear:</a>
+Para poder usar este proyecto sigue los siguientes pasos:
+ - Abre tu terminal o línea de comandos y ejecuta el siguiente comando para clonar el repositorio desde GitHub **git clone https://github.com/NeylaP/Empanadas.git**
+- Una vez clonado el repositorio, accede al directorio del proyecto.
+- Abre la carpeta del proyecto en tu editor de texto o IDE favorito, ahora ya puedes interactuar con el y modificarlo a tu gusto. 
 
-Por cada conjunto de entrada, retornar un único entero: la mínima cantidad de euros que se puede pagar para llevarse todas las empanadas.
+## <a id="instrucciones">Instrucciones de uso :open_book:</a>
 
-## Ejemplos de casos de uso
-
-| Entrada     | Salida      |
-| ----------- | ----------- |
-| 1, 1, 1     | 14          |
-| 3, 3, 0     | 26          |
-| 2, 0, 1     | 14          |
-| 9, 10, 11   | 142         |
-
-
-## Instrucciones de uso
-
-1. Clonar el repositorio
-3. Instalar las dependencias:
+1. Instalar las dependencias:
 
     ```bash
     npm install
     ```
 
-4. Completar los argumentos y el cuerpo de la función `fn` en el archivo (`main.js`). No se debe renombrar la función `fn`.
-
-    ```javascript
-    // main.js
-    export const fn = (/* argumentos de la función */) => {
-    // Cuerpo de la función: Completa la lógica de la función aquí.
-    };
-    ```
-
-4. Ejecutar los test:
+2. Ejecutar los test:
     ```bash
     npm run test
     ```
+## <a id="autora">Autora :woman_technologist:</a>
 
-## Evaluación
-
-### Mínimo
-Para el APTO se deben pasar todos los test excepto los de validaciones de errores en la entrada de datos
-
-### Extra
-Pasar los test de validación de errores en la entrada de datos (Throws error)
-
-### Ejemplo de ejecución de los test
-
-```bash
-✓ main.test.js (7)
-   ✓ Function fn - Input Parameter Test Cases (7)
-     ✓ Case: fn(1, 1, 1) - Expected Result: 14
-     ✓ Case: fn(3, 3, 0) - Expected Result: 26
-     ✓ Case: fn(2, 0, 1) - Expected Result: 14
-     ✓ Case: fn(9, 10, 11) - Expected Result: 142
-     ✓ Throw error on negative input value: fn(-1, 3, 1)
-     ✓ Throws error when the total sum of inputs (2+2+1) is not a multiple of 3: fn(2, 2, 1)
-     ✓ Throws error when the total sum of inputs (15+15+20) is not less than 40: fn(15, 15, 20)
-```
+- **Neyla Peña M.** - Developer
+  - [GitHub](https://github.com/NeylaP) - [LinkedIn](https://www.linkedin.com/in/neyla-pm/) 
 
  
