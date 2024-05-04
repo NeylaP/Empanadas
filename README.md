@@ -37,7 +37,10 @@ La fórmula toma en cuenta el precio más alto y el más bajo de las empanadas s
 
 ## <a id="instalacion">Instalación :gear:</a>
 Para poder usar este proyecto sigue los siguientes pasos:
- - Abre tu terminal o línea de comandos y ejecuta el siguiente comando para clonar el repositorio desde GitHub **git clone https://github.com/NeylaP/Empanadas.git**
+ - Abre tu terminal o línea de comandos y ejecuta el siguiente comando para clonar el repositorio desde GitHub 
+   ```bash
+    git clone https://github.com/NeylaP/Empanadas.git
+   ```
 - Una vez clonado el repositorio, accede al directorio del proyecto.
 - Abre la carpeta del proyecto en tu editor de texto o IDE favorito, ahora ya puedes interactuar con el y modificarlo a tu gusto. 
 
